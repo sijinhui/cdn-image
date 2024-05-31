@@ -1,2 +1,0 @@
-file_list.txt
-generate_filelist.sh
