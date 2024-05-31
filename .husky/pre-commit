@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -x
 # Function to generate file list for a given directory
 generate_file_list() {
     local dir=$1  # Ensure we properly handle the directory variable
@@ -28,8 +29,8 @@ generate_file_list() {
 export -f generate_file_list
 
 # Find all directories and generate file lists, excluding .git directories
-find . -type d -not -path './node_modules' -not -path '*/\.*'
-find . -type d -not -path './node_modules' -not -path '*/\.*' -exec bash -c 'generate_file_list "$1"' _ {} \;
+find . -type d -not -path './node_modules' -not -path './node_modules/husky' -not -path '*/\.*'
+find . -type d -not -path './node_modules' -not -path './node_modules/husky' -not -path '*/\.*' -exec bash -c 'generate_file_list "$1"' _ {} \;
 
 # Add the generated file_list.txt files to the staging area
 git add $(find . -name 'file_list.txt')
