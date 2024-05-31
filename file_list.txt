@@ -2,4 +2,6 @@ index.html
 CNAME
 404.html
 README.md
+package-lock.json
+package.json
 _config.yml
